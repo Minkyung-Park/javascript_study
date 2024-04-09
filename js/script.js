@@ -1,6 +1,8 @@
-let a = 3,
-  b = "3",
-  c = 5,
-  d = 3;
+// 원의 넓이 구하기
+let r = 8;
+let area;
+const pi = 3.14;
 
-console.log(a === b);
+area = r * r * pi;
+console.log(`반지름: ${r}`);
+console.log(`원의 넓이: ${area}`);
