@@ -1,7 +1,3 @@
-const member = {
-  name: "홍길동",
-  age: 30,
-};
+const car = ["현대", "기아", "벤츠", "BMW"];
 
-// Symbol()로 심볼 id 생성
-let id = Symbol("id");
+console.log(car[0]);
