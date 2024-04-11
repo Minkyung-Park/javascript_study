@@ -6,6 +6,28 @@
     <title>Javascript 스터디</title>
   </head>
   <body>
-    <script src="js/script.js"></script>
+    <button type="button" onclick="changeColor()">색상변경</button>
+    <div
+      id="box"
+      style="width: 100px; height: 100px; background-color: green"
+    ></div>
+    <!-- <script src="js/script.js"></script> -->
+
+    <script>
+      let box = document.getElementById("box");
+
+      const change = (function () {
+        let toggle = false;
+        return function () {
+          box.style.backgroundColor = toggle ? "blue" : "red";
+          toggle = !toggle;
+          return toggle;
+        };
+      })();
+
+      function changeColor() {
+        document.getElementById("box").innerHTML = change();
+      }
+    </script>
   </body>
 </html>
