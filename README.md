@@ -1,168 +1,69 @@
-## 11.1 객체 생성
+# 12. 생성자 함수와 클래스
 
-- 객체(object)는 property와 method의 집합임
-- 객체의 property는 변수와 같은 개념
-- 객체의 method는 함수와 거의 동일한 것(함수랑은 다른 것임)
-- 특정 객체에 소속된 변수와 함수를 그 객체의 property와 method라고 부름
-- JS에서 객체는 아주 중요한 개념
-- function, array, date, math 등 모든 것이 객체
-- JS의 number, string도 일종의 객체
+## 12. 1 생성자 함수
 
-```js
-// 1. 객체 member를 생성
-// 객체를 생성할 때는 일반적으로 키워드 const 사용
+### 12.1.1 생성자 함수란
 
-// member 객체는 id, username, age 세 개의 property로 구성
-// property에 id, username, age를 키(key)라고 부름
-// 이에 대응되는 "kdhong", "홍길동", 30을 값(value)라고 함
+- 생성자 함수(constructor function)는 일반 함수와 기능적인 차이는 없음
+- 그러나 일반 함수와는 달리 생산자 함수는 new 연산자와 함께 JS에서 객체를 생성하기 위해 사용
+- 생성자 함수를 정의할 때에는 일반 함수와 구분하기 위해 첫 글자를 대문자로 시작
 
-// 뭔가 오류 뜨는데 다시 확인하기
-const member = {
-  id: "kdhong",
-  username: "홍길동",
-  age: 30,
-};
-
-let text;
-text = `${member.id} ${member.username} ${member.age}`;
-console.log("member object", text);
-
-document.getElementById("show").innerHTML = text;
-```
-
-## 11.2 property
-
-- 객체는 property method로 구성
-
-### 11.2.1 for in 문으로 property 읽기
+<팁> : html에서 body 안에 script 하나만(<script src="js/constructor.js"></script>) 연결해 아니면 콘솔에 안뜨더라
 
 ```js
-const member = {
-  id: "kdhong",
-  username: "홍길동",
-  age: 30,
-};
+// 생성자 함수의 객체 생성 예시
 
-let text = "";
-
-// for in 문에서 x는 객체 member에 존재하는 property의 key 이름을 가짐
-// 따라서 반복 루프에서 변수 x의 값은 id
-for (x in member) {
-  text += member[x]; // text + member[x]
+// 생성자 함수 Member는 세 개의 매개변수 id, name, age를 받음
+function Member(id, name, age) {
+  // 키워드 this는 생성자 함수로 생성되는 객체 자신을 의미
+  // 따라서 this.id는 객체 자신의 property id를 의미
+  this.id = id;
+  this.name = name;
+  this.age = age;
 }
 
+const member1 = new Member("kdhong", "홍길동", 30);
+const member2 = new Member("kdkim", "김길동", 29);
+const member3 = new Member("gildong", "길동이", 24);
+
+let text = "";
+text += member1.name;
+text += member2.name;
+text += member3.name;
+
 document.getElementById("show").innerHTML = text;
 ```
 
-### 11.2.2 property 추가하기
+### 12.1.2 생성자 함수의 메서드
 
 ```js
-const member = {
-  id: "kdhong",
-  username: "홍길동",
-  age: 30,
-};
+// 생성자 함수의 객체 생성 예시
 
-member.email = "kdhong@gmail.com";
-
-let text = "";
-
-// for in 문에서 x는 객체 member에 존재하는 property를 가짐
-// 따라서 반복 루프에서 변수 x의 값은 id
-for (x in member) {
-  text += `키: ${x} 값: ${member[x]} <br>`;
+// 생성자 함수 Member는 세 개의 매개변수 id, name, age를 받음
+function Member(id, name, age) {
+  // 키워드 this는 생성자 함수로 생성되는 객체 자신을 의미
+  // 따라서 this.id는 객체 자신의 property id를 의미
+  this.id = id;
+  this.name = name;
+  this.age = age;
+  this.getName = function () {
+    return `나의 이름은 ${this.name}입니다`;
+  };
 }
 
-document.getElementById("show").innerHTML = text;
-```
-
-### 11.2.3 property 삭제하기
-
-```js
-const member = {
-  id: "kdhong",
-  username: "홍길동",
-  age: 30,
-};
-
-delete member.id;
+const member1 = new Member("kdhong", "홍길동", 30);
+const member2 = new Member("kdkim", "김길동", 29);
+const member3 = new Member("gildong", "길동이", 24);
 
 let text = "";
-
-for (x in member) {
-  text += `키: ${x} 값: ${member[x]} <br>`;
-}
-
-document.getElementById("show").innerHTML = text;
-```
-
-### 11.2.4 중첩 객체
-
-```js
-const member = {
-  id: "kdhong",
-  username: "홍길동",
-  age: 30,
-  hobby: {
-    hobby1: "게임",
-    hobby2: "탁구",
-    hobby3: "기타",
-  },
-};
-
-let text = "";
-
-text = member.hobby.hobby1;
+text += `${member1.name} <br>`;
+text += `${member2.name} <br>`;
+text += `${member3.name} <br>`;
+text += `${member1.getName()}`;
 
 document.getElementById("show").innerHTML = text;
 ```
 
-## 11.3 메서드
+## 12.2 프로토 타입
 
-### 11.3.1 메서드란?
-
-- 객체는 프로퍼티와 메서드로 구성됨
-- 프로퍼티는 객체에 소속된 변수
-- 메서드는 객체에 소속된 함수
-- 다르게 말하자면 property는 객체의 상태를 의미하는 것
-- 메서드는 객체의 동작을 정의한다라고 할 수 있음
-
-```js
-const dog = {
-  name: "댕댕이",
-  species: "믹스",
-  color: "흰색",
-  age: 3,
-  intro: function () {
-    return `우리집 강아지 이름은 ${this.name} 입니다`;
-  },
-};
-
-document.getElementById("show").innerHTML = dog.intro();
-```
-
-### 11.3.2 메서드 추가하기
-
-```js
-const dog = {
-  name: "댕댕이",
-  species: "믹스",
-  color: "흰색",
-  age: 3,
-  intro: function () {
-    return `우리집 강아지 이름은 ${this.name} 입니다`;
-  },
-};
-
-dog.getAge = function () {
-  return `나이는 ${this.age}살 입니다`;
-};
-
-document.getElementById("show").innerHTML = dog.getAge();
-```
-
-### 11.3.3 내장 메서드
-
-- JS 자체적으로 만들어준 내장 객체(bulit-in object)
-- 이 내장 객체들은 내장 메서드를 제공함으로써 객체에 관련된 프로그래밍을 할 수 있게 해줌
-- 많이 사용되는 객체에는 number, string, array, date, math 등이 있음
+## 12.3 클래스
