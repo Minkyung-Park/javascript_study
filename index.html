@@ -6,28 +6,13 @@
     <title>Javascript 스터디</title>
   </head>
   <body>
-    <button type="button" onclick="changeColor()">색상변경</button>
-    <div
-      id="box"
-      style="width: 100px; height: 100px; background-color: green"
-    ></div>
-    <!-- <script src="js/script.js"></script> -->
+    <script src="js/script.js"></script>
+    <script src="js/closure.js"></script>
+    <script src="js/exception.js"></script>
 
-    <script>
-      let box = document.getElementById("box");
-
-      const change = (function () {
-        let toggle = false;
-        return function () {
-          box.style.backgroundColor = toggle ? "blue" : "red";
-          toggle = !toggle;
-          return toggle;
-        };
-      })();
-
-      function changeColor() {
-        document.getElementById("box").innerHTML = change();
-      }
-    </script>
+    <h3>0 - 9 숫자가 입력되었는지 체크하기</h3>
+    <input type="text" id="input1" />
+    <span id="show"></span><br />
+    <button onclick="checkInput()">확인</button>
   </body>
 </html>
