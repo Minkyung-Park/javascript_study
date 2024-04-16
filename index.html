@@ -1,14 +1,21 @@
+<!-- Document -->
 <!DOCTYPE html>
+<!-- 요소 : html, 속성 : lang -->
 <html lang="ko">
+  <!-- 요소 : head -->
   <head>
+    <!-- 요소 : meta, 속성 : charset -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 요소 : title, 텍스트 : Javascript 스터디 -->
     <title>Javascript 스터디</title>
   </head>
   <body>
-    <p id="show"></p>
+    <form name="form1">
+      이름: <input type="text" name="name" /> <br />
+      <button onclick="get_name()">버튼</button>
+    </form>
 
-    <script src="js/array.js"></script>
+    <script src="js/dom.js"></script>
   </body>
 </html>
-<!-- body 안에 script 하나만(<script src="js/constructor.js"></script>) 연결해 아니면 콘솔에 안뜨더라 -->
