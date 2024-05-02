@@ -1,4 +1,6 @@
-function get_name() {
-  let text = document.form1.name.value;
-  alert(text);
+function changeImg() {
+  document.getElementById("image").src = `images/image-4.png`;
+}
+function changSize() {
+  document.getElementById("image").width = "200";
 }
