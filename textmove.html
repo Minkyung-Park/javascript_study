@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>스크롤 동작으로 양 옆으로 움직이는 텍스트</title>
+    <style>
+      body,
+      html {
+        height: 200%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .text {
+        position: fixed;
+        white-space: nowrap;
+      }
+      #textTop {
+        top: 50%;
+      }
+      #textBottom {
+        bottom: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="textTop" class="text">위쪽 텍스트 - 오른쪽으로 이동</div>
+    <div id="textBottom" class="text">아래쪽 텍스트 - 왼쪽으로 이동</div>
+
+    <script src="js/textmove.js"></script>
+  </body>
+</html>

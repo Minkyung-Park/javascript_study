@@ -1,13 +1,5 @@
-let text = "";
-
-const btn = document.getElementById("btn");
-
-btn.addEventListener("click", function () {
-  text += "안녕하세요<br>";
+// e(이벤트)를 받아야 한다
+function showCoord(e) {
+  let text = "좌표 : (" + e.clientX + ", " + e.clientY + ")";
   document.getElementById("show").innerHTML = text;
-});
-
-btn.addEventListener("click", function () {
-  text += "Nice to meet you<br>";
-  document.getElementById("show").innerHTML = text;
-});
+}
