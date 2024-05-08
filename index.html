@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Javascript 스터디</title>
-    <style>
-      div#box {
-        border: solid 3px red;
-        width: 300px;
-        height: 200px;
-      }
-    </style>
   </head>
   <body>
-    <div id="box" onmousemove="showCoord(event)">
-      <p id="show"></p>
-    </div>
-
+    <label>
+      사이즈:
+      <select name="size" id="sz">
+        <option value="">선택</option>
+        <option value="small">S</option>
+        <option value="medium">M</option>
+        <option value="large">L</option>
+        <option value="xlarge">XL</option>
+      </select>
+    </label>
+    <p id="show"></p>
     <script src="js/event.js"></script>
   </body>
 </html>
